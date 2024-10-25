@@ -45,10 +45,14 @@ import {
 } from "../ui/sheet";
 
 export const History = ({ user }: { user: User | undefined }) => {
+  // useParams ist eine Hook, die die Parameter aus der URL ausliest
   const { id } = useParams();
+  // usePathname ist eine Hook, die den aktuellen Pfad ausliest
   const pathname = usePathname();
 
+  // isHistoryVisible ist ein boolean, der angibt, ob die History angezeigt wird
   const [isHistoryVisible, setIsHistoryVisible] = useState(false);
+
   const {
     data: history,
     isLoading,
@@ -61,7 +65,9 @@ export const History = ({ user }: { user: User | undefined }) => {
     mutate();
   }, [pathname, mutate]);
 
+  // deleteId ist ein string, der die ID des zu löschenden Chats speichert
   const [deleteId, setDeleteId] = useState<string | null>(null);
+  // showDeleteDialog ist ein boolean, der angibt, ob das Löschen-Dialog angezeigt wird
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
 
   const handleDelete = async () => {
